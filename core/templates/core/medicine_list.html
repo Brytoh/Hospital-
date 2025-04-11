@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine List</title>
+</head>
+<body>
+    <h1>List of Medicines</h1>
+<ul>
+    {% for medicine in medicines %}
+        <li>{{ medicine.name }} -Ksh. {{ medicine.price }} </li>
+    {% empty %}
+        <li>No medicines available.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
