@@ -139,6 +139,20 @@
 
 
 
+            <div class="doctor-card">
+        {% for doctor in doctors %}
+                <h3>Dr. {{ doctor.first_name }} {{ doctor.last_name }} </h3>
+
+                <p><strong>Specialty:</strong> Pediatrics</p>
+                <p>With a passion for children's health, Dr. Jane Smith specializes in pediatric care, from newborns to adolescents.</p>
+
+                <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
+
+        {% endfor %}
+
+</div>
+
+
 
             <!-- Doctor 3 -->
             <div class="doctor-card">
@@ -164,15 +178,6 @@
 </footer>
 
 
-    <h1>Available Doctors</h1>
-    <ul>
-        {% for doctor in doctors %}
-            <li>
-                Dr. {{ doctor.first_name }} {{ doctor.last_name }} -
-                <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
-            </li>
-        {% endfor %}
-    </ul>
 
 
 
