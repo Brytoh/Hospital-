@@ -1,9 +1,5 @@
-
-
-# Create your views here.
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from django.urls import reverse
 from .models import Doctor, Appointment, Medicine, Order
 from .forms import AppointmentForm, OrderForm
 
@@ -12,9 +8,9 @@ def doctor_list(request):
     doctors = Doctor.objects.all()
     return render(request, 'core/doctor_list.html', {'doctors': doctors})
 
-
 def home(request):
     return render(request, 'core/home.html')
+
 # View to create an appointment
 def create_appointment(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
@@ -25,8 +21,8 @@ def create_appointment(request, doctor_id):
             appointment = form.save(commit=False)
             appointment.doctor = doctor
             appointment.save()
-            # After successful appointment, redirect to a confirmation or appointment details page.
-            return HttpResponse(f"Appointment successfully booked with Dr. {doctor.first_name} {doctor.last_name}.")
+            # Redirect to a confirmation or appointment details page after booking the appointment
+            return redirect('appointment_detail', appointment_id=appointment.id)  # You'll need to define the 'appointment_detail' view
     else:
         form = AppointmentForm()
 
@@ -53,7 +49,7 @@ def create_order(request, medicine_id):
 
             order.total_price = medicine.price * order.quantity
             order.save()
-            return HttpResponse(f"Order for {medicine.name} successfully placed. Total Price: {order.total_price}.")
+            return redirect('order_detail', order_id=order.id)  # You'll need to define the 'order_detail' view
     else:
         form = OrderForm()
 
