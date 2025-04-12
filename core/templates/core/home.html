@@ -2,13 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Healthcare System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        h2 {
+            color: #00796b;
+        }
+
+        .doctor-list, .appointment-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .doctor-list li, .appointment-list li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .cta-button {
+            background-color: #ff5722;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #e64a19;
+        }
+
+    </style>
 </head>
 <body>
-<!-- core/home.html -->
-<h1>Welcome to the Hospital Management System</h1>
-<p><a href="{% url 'doctor_list' %}">View Doctors</a></p>
-<p><a href="{% url 'medicine_list' %}">View Medicines</a></p>
+
+<header>
+    <h1>Welcome to the Healthcare System</h1>
+    <p>Your health is our priority!</p>
+</header>
+
+<div class="container">
+
+    <section>
+        <h2>Recent Doctors</h2>
+        <ul class="doctor-list">
+            {% for doctor in doctors %}
+                <li>
+                    <strong>{{ doctor.first_name }} {{ doctor.last_name }}</strong> - {{ doctor.specialization }}<br>
+                    <a href="/doctor/{{ doctor.id }}/appointment/">Book an Appointment</a>
+                </li>
+            {% empty %}
+                <li>No doctors available at the moment.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Upcoming Appointments</h2>
+        <ul class="appointment-list">
+            {% for appointment in appointments %}
+                <li>
+                    Appointment with Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }} on {{ appointment.date }}
+                </li>
+            {% empty %}
+                <li>No upcoming appointments.</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <a href="/doctors/" class="cta-button">View All Doctors</a>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2025 Healthcare System. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
