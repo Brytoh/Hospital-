@@ -21,8 +21,8 @@ def create_appointment(request, doctor_id):
             appointment = form.save(commit=False)
             appointment.doctor = doctor
             appointment.save()
-            # Redirect to a confirmation or appointment details page after booking the appointment
-            return redirect('appointment_detail', appointment_id=appointment.id)  # You'll need to define the 'appointment_detail' view
+            # Redirect to the appointment detail page after booking the appointment
+            return redirect('appointment_detail', appointment_id=appointment.id)
     else:
         form = AppointmentForm()
 
@@ -49,7 +49,8 @@ def create_order(request, medicine_id):
 
             order.total_price = medicine.price * order.quantity
             order.save()
-            return redirect('order_detail', order_id=order.id)  # You'll need to define the 'order_detail' view
+            # Redirect to the order detail page after placing the order
+            return redirect('order_detail', order_id=order.id)
     else:
         form = OrderForm()
 
