@@ -55,3 +55,13 @@ def create_order(request, medicine_id):
         form = OrderForm()
 
     return render(request, 'core/create_order.html', {'form': form, 'medicine': medicine})
+
+# View for appointment details
+def appointment_detail(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    return render(request, 'core/appointment_detail.html', {'appointment': appointment})
+
+# View for order details
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id)
+    return render(request, 'core/order_detail.html', {'order': order})
