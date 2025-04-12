@@ -3,20 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Healthcare System</title>
+    <title>Home - Healthcare System</title>
     <style>
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
             margin: 0;
             padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
         }
 
+        /* Header Styles */
         header {
             background-color: #00796b;
             color: white;
             text-align: center;
-            padding: 20px 0;
+            padding: 50px 0;
         }
 
         header h1 {
@@ -24,36 +27,23 @@
             margin: 0;
         }
 
-        .container {
-            padding: 20px;
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
 
-        h2 {
-            color: #00796b;
-        }
-
-        .section-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .section-list li {
-            background-color: white;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            background-color: #00796b;
-            color: white;
+        /* Hero Section */
+        .hero {
+            background-image: url('path-to-your-image.jpg'); /* Replace with your hero image */
+            background-size: cover;
+            background-position: center;
+            padding: 150px 0;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            color: white;
         }
 
-        footer p {
+        .hero h2 {
+            font-size: 2.5rem;
             margin: 0;
         }
 
@@ -72,46 +62,198 @@
             background-color: #e64a19;
         }
 
+        /* Navigation */
+        nav {
+            background-color: #004d40;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Container for sections */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Services Section */
+        .services {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .service-card h3 {
+            color: #00796b;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f4f7f6;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .testimonials h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonials blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .service-card {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to the Healthcare System</h1>
+    <h1>Welcome to Healthcare System</h1>
     <p>Your health is our priority!</p>
 </header>
 
+<div class="hero">
+    <h2>Your Path to Better Health Begins Here</h2>
+    <a href="#services" class="cta-button">Discover Our Services</a>
+</div>
+
+<nav>
+    <a href="#about">About Us</a>
+    <a href="#vision">Vision</a>
+    <a href="#contact">Contact</a>
+    <a href="#services">Services</a>
+</nav>
+
 <div class="container">
-
-    <section>
+    <!-- About Us Section -->
+    <section id="about">
         <h2>About Us</h2>
-        <ul class="section-list">
-            <li>We are dedicated to providing high-quality healthcare to our community.</li>
-            <li>Our team of doctors and medical staff is committed to improving patient care and outcomes.</li>
-        </ul>
+        <p>We are a dedicated healthcare service provider, offering the best medical care and health solutions. Our team of experienced doctors and medical staff are committed to providing excellent services, ensuring your health and well-being at all times.</p>
     </section>
 
-    <section>
-        <h2>Contact Us</h2>
-        <ul class="section-list">
-            <li>Email: contact@healthcaresystem.com</li>
-            <li>Phone: +1 (123) 456-7890</li>
-            <li>Address: 123 Health St, Wellness City, Country</li>
-        </ul>
-    </section>
-
-    <section>
+    <!-- Vision Section -->
+    <section id="vision">
         <h2>Our Vision</h2>
-        <ul class="section-list">
-            <li>To be a leading provider of healthcare services, ensuring excellent care for every individual.</li>
-            <li>To innovate and constantly improve our healthcare system using advanced technologies.</li>
-        </ul>
+        <p>Our vision is to be the leading healthcare provider, revolutionizing the medical landscape through innovation, compassionate care, and a patient-first approach. We aim to make healthcare services more accessible, affordable, and efficient.</p>
     </section>
 
-    <section>
-        <a href="/about/" class="cta-button">Learn More About Us</a>
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service-card">
+                <h3>General Medicine</h3>
+                <p>Comprehensive care for everyday health issues, from common illnesses to preventive care.</p>
+            </div>
+            <div class="service-card">
+                <h3>Surgical Procedures</h3>
+                <p>Specialized surgeries with advanced techniques to ensure the best outcomes for our patients.</p>
+            </div>
+            <div class="service-card">
+                <h3>Emergency Care</h3>
+                <p>24/7 emergency services to handle critical medical situations with immediate care.</p>
+            </div>
+            <div class="service-card">
+                <h3>Health Check-ups</h3>
+                <p>Routine check-ups and diagnostics to monitor your health and detect potential issues early.</p>
+            </div>
+        </div>
     </section>
 
+    <!-- Testimonials Section
+    <section class="testimonials">
+        <h2>What Our Patients Say</h2>
+        <blockquote>"I had a wonderful experience with the healthcare system. The doctors were caring and knowledgeable. Highly recommend!" - Jane Doe</blockquote>
+        <blockquote>"Efficient and compassionate care. The team was always there for me when I needed them." - John Smith</blockquote>
+    </section>-->
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, need assistance, or want to book an appointment, feel free to contact us:</p>
+        <p>Email: support@healthcaresystem.com</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Address: 123 Healthcare St, Medical City</p>
+    </section>
 </div>
 
 <footer>
