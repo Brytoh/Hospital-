@@ -66,3 +66,7 @@ def appointment_detail(request, appointment_id):
 def order_detail(request, order_id):
     order = get_object_or_404(Order, id=order_id)  # Fetch the order by ID
     return render(request, 'core/order_detail.html', {'order': order})
+
+# View for about page
+def about(request):
+    return render(request, 'core/about.html')

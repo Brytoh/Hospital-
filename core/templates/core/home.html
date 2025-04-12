@@ -32,12 +32,12 @@
             color: #00796b;
         }
 
-        .doctor-list, .appointment-list {
+        .section-list {
             list-style-type: none;
             padding: 0;
         }
 
-        .doctor-list li, .appointment-list li {
+        .section-list li {
             background-color: white;
             margin: 10px 0;
             padding: 15px;
@@ -84,34 +84,32 @@
 <div class="container">
 
     <section>
-        <h2>Recent Doctors</h2>
-        <ul class="doctor-list">
-            {% for doctor in doctors %}
-                <li>
-                    <strong>{{ doctor.first_name }} {{ doctor.last_name }}</strong> - {{ doctor.specialization }}<br>
-                    <a href="/doctor/{{ doctor.id }}/appointment/">Book an Appointment</a>
-                </li>
-            {% empty %}
-                <li>No doctors available at the moment.</li>
-            {% endfor %}
+        <h2>About Us</h2>
+        <ul class="section-list">
+            <li>We are dedicated to providing high-quality healthcare to our community.</li>
+            <li>Our team of doctors and medical staff is committed to improving patient care and outcomes.</li>
         </ul>
     </section>
 
     <section>
-        <h2>Upcoming Appointments</h2>
-        <ul class="appointment-list">
-            {% for appointment in appointments %}
-                <li>
-                    Appointment with Dr. {{ appointment.doctor.first_name }} {{ appointment.doctor.last_name }} on {{ appointment.date }}
-                </li>
-            {% empty %}
-                <li>No upcoming appointments.</li>
-            {% endfor %}
+        <h2>Contact Us</h2>
+        <ul class="section-list">
+            <li>Email: contact@healthcaresystem.com</li>
+            <li>Phone: +1 (123) 456-7890</li>
+            <li>Address: 123 Health St, Wellness City, Country</li>
         </ul>
     </section>
 
     <section>
-        <a href="/doctors/" class="cta-button">View All Doctors</a>
+        <h2>Our Vision</h2>
+        <ul class="section-list">
+            <li>To be a leading provider of healthcare services, ensuring excellent care for every individual.</li>
+            <li>To innovate and constantly improve our healthcare system using advanced technologies.</li>
+        </ul>
+    </section>
+
+    <section>
+        <a href="/about/" class="cta-button">Learn More About Us</a>
     </section>
 
 </div>
