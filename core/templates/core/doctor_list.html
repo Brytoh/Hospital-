@@ -102,6 +102,9 @@
 </head>
 <body>
 
+<!-- Load static files -->
+{% load static %}
+
 <header>
     <h1>Doctors - Healthcare </h1>
 </header>
@@ -123,8 +126,7 @@
         <div class="doctor-list">
             {% for doctor in doctors %}
             <div class="doctor-card">
-
-
+                <img src="{% if doctor.image %}{{ doctor.image.url }}{% else %}{% static 'images/default_image_path.jpg' %}{% endif %}" alt="Doctor Image" />
                 <h3>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h3>
                 <p><strong>Specialty:</strong> General Medicine</p>
 

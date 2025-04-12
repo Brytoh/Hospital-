@@ -1,4 +1,8 @@
 from django.db import models
+from PIL import Image
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
 
 # Patient Model
 class Patient(models.Model):
@@ -29,6 +33,17 @@ class Doctor(models.Model):
 
     class Meta:
         verbose_name_plural = "Doctors"
+
+
+# Resize image before saving (connected to pre_save signal)
+@receiver(pre_save, sender=Doctor)
+def resize_doctor_image(sender, instance, **kwargs):
+    if instance.image:
+        img = Image.open(instance.image)
+        # Resize image if the dimensions are larger than 300px
+        if img.height > 300 or img.width > 300:
+            img = img.resize((300, 300))
+            img.save(instance.image.path)
 
 
 # Appointment Model
