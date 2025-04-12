@@ -2,14 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form p {
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>Book Appointment with Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Book Appointment</button>
-    </form>
+    <div class="container">
+        <h1>Book Appointment with Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h1>
+
+        {% if appointment %}
+            <div class="success-message">
+                <p>Appointment successfully booked with Dr. {{ doctor.first_name }} {{ doctor.last_name }}!</p>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
 </body>
 </html>
