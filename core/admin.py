@@ -10,3 +10,5 @@ admin.site.register(Doctor)
 admin.site.register(Appointment)
 admin.site.register(Medicine)
 admin.site.register(Order)
+
+
