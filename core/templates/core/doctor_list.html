@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Healthcare System - Doctors</title>
+    <title>Healthcare  - Doctors</title>
+
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -103,7 +105,7 @@
 <body>
 
 <header>
-    <h1>Doctors - Healthcare System</h1>
+    <h1>Doctors - Healthcare </h1>
 </header>
 
 <nav>
@@ -125,20 +127,23 @@
                <div class="doctor-card">
         {% for doctor in doctors %}
                 <h3>Dr. {{ doctor.first_name }} {{ doctor.last_name }} </h3>
-                <p><strong>Specialty:</strong> Pediatrics</p>
+                <p><strong>Specialty:</strong> General Medicine</p>
                 <p>Dr. Gascoigne Paul has years of experience in general medicine, providing care for all ages and a wide range of conditions.</p>
                 <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
         {% endfor %}
 </div>
 
 
-            <!-- Doctor 1 -->
-            <div class="doctor-card">
-                <h3>Dr. John Doe</h3>
+     <div class="doctor-card">
+        {% for doctor in doctors %}
+                <h3>Dr. {{ doctor.first_name }} {{ doctor.last_name }} </h3>
                 <p><strong>Specialty:</strong> General Medicine</p>
-                <p>Dr. John Doe has over 15 years of experience in general medicine, providing care for all ages and a wide range of conditions.</p>
-                <a href="book-appointment.html?doctor=1">Book Appointment</a>
-            </div>
+                <p>Dr. Gascoigne Paul has years of experience in general medicine, providing care for all ages and a wide range of conditions.</p>
+                <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
+        {% endfor %}
+</div>
+
+
 
             <!-- Doctor 2 -->
             <div class="doctor-card">
