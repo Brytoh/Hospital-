@@ -22,6 +22,7 @@ class Doctor(models.Model):
     specialty = models.CharField(max_length=100)
     phone = models.CharField(max_length=15)
     email = models.EmailField(unique=True)
+    image = models.ImageField(upload_to='doctor_pics/', blank=True, null=True)  # New image field
 
     def __str__(self):
         return f"Dr. {self.first_name} {self.last_name}"
