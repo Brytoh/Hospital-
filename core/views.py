@@ -5,13 +5,14 @@ from .forms import AppointmentForm, OrderForm
 
 # View to list available doctors
 def doctor_list(request):
-    doctors = Doctor.objects.all()
+    doctors = Doctor.objects.all()  # Fetch all doctors
     return render(request, 'core/doctor_list.html', {'doctors': doctors})
 
+# Home page view
 def home(request):
     return render(request, 'core/home.html')
 
-# View to create an appointment
+# View to create an appointment with a specific doctor
 def create_appointment(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
 
@@ -19,7 +20,7 @@ def create_appointment(request, doctor_id):
         form = AppointmentForm(request.POST)
         if form.is_valid():
             appointment = form.save(commit=False)
-            appointment.doctor = doctor
+            appointment.doctor = doctor  # Associate the appointment with the doctor
             appointment.save()
             # Redirect to the appointment detail page after booking the appointment
             return redirect('appointment_detail', appointment_id=appointment.id)
@@ -30,10 +31,10 @@ def create_appointment(request, doctor_id):
 
 # View to list available medicines
 def medicine_list(request):
-    medicines = Medicine.objects.all()
+    medicines = Medicine.objects.all()  # Fetch all medicines
     return render(request, 'core/medicine_list.html', {'medicines': medicines})
 
-# View to create an order for medicines
+# View to create an order for a specific medicine
 def create_order(request, medicine_id):
     medicine = get_object_or_404(Medicine, id=medicine_id)
 
@@ -41,13 +42,13 @@ def create_order(request, medicine_id):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            order.medicine = medicine
+            order.medicine = medicine  # Associate the order with the medicine
 
             # Make sure the quantity is greater than 0 before placing the order
             if order.quantity <= 0:
                 return HttpResponse("Please enter a valid quantity greater than 0.")
 
-            order.total_price = medicine.price * order.quantity
+            order.total_price = medicine.price * order.quantity  # Calculate total price
             order.save()
             # Redirect to the order detail page after placing the order
             return redirect('order_detail', order_id=order.id)
@@ -58,10 +59,10 @@ def create_order(request, medicine_id):
 
 # View for appointment details
 def appointment_detail(request, appointment_id):
-    appointment = get_object_or_404(Appointment, id=appointment_id)
+    appointment = get_object_or_404(Appointment, id=appointment_id)  # Fetch the appointment by ID
     return render(request, 'core/appointment_detail.html', {'appointment': appointment})
 
 # View for order details
 def order_detail(request, order_id):
-    order = get_object_or_404(Order, id=order_id)
+    order = get_object_or_404(Order, id=order_id)  # Fetch the order by ID
     return render(request, 'core/order_detail.html', {'order': order})

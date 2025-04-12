@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Available Doctors</title>
+    <title>Home - Healthcare System</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
             margin: 0;
             padding: 0;
+            background-color: #f4f7f6;
         }
 
         header {
@@ -24,84 +24,113 @@
             margin: 0;
         }
 
-        .container {
-            padding: 20px;
+        nav {
+            background-color: #004d40;
+            padding: 15px;
+            text-align: center;
         }
 
-        h2 {
-            color: #00796b;
-            font-size: 1.8rem;
-        }
-
-        .doctor-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .doctor-list li {
-            background-color: white;
-            margin: 10px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .doctor-list li a {
-            background-color: #ff5722;
+        nav a {
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
             text-decoration: none;
-            font-size: 1rem;
+            margin: 0 15px;
+            font-size: 1.1rem;
         }
 
-        .doctor-list li a:hover {
-            background-color: #e64a19;
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #00796b;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: justify;
+            color: #333;
         }
 
         footer {
             background-color: #00796b;
             color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             margin-top: 20px;
         }
 
         footer p {
             margin: 0;
         }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Available Doctors</h1>
+    <h1>Welcome to Healthcare System</h1>
 </header>
 
+<nav>
+    <a href="#about">About Us</a>
+    <a href="#vision">Vision</a>
+    <a href="#contact">Contact</a>
+    <a href="#services">Services</a>
+</nav>
+
 <div class="container">
-    <section>
-        <h2>Our Specialists</h2>
-        <ul class="doctor-list">
-            {% for doctor in doctors %}
-                <li>
-                    <div>
-                        <strong>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</strong> -
-                        {{ doctor.specialization }}<br>
-                        <small>Experience: {{ doctor.experience }} years</small>
-                    </div>
-                    <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
-                </li>
-            {% empty %}
-                <li>No doctors available at the moment.</li>
-            {% endfor %}
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a dedicated healthcare service provider, offering the best medical care and health solutions. Our team of experienced doctors and medical staff are committed to providing excellent services, ensuring your health and well-being at all times.</p>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision">
+        <h2>Our Vision</h2>
+        <p>Our vision is to be the leading healthcare provider, revolutionizing the medical landscape through innovation, compassionate care, and a patient-first approach. We aim to make healthcare services more accessible, affordable, and efficient.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, need assistance, or want to book an appointment, feel free to contact us:</p>
+        <p>Email: support@healthcaresystem.com</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Address: 123 Healthcare St, Medical City</p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2>Our Services</h2>
+        <p>We provide a wide range of healthcare services, including:</p>
+        <ul>
+            <li>General Medicine</li>
+            <li>Surgical Procedures</li>
+            <li>Health Check-ups and Diagnostics</li>
+            <li>Emergency Care</li>
+            <li>Prescription Medicine</li>
+            <li>Specialist Consultations</li>
         </ul>
     </section>
 </div>
 
-
+<footer>
+    <p>&copy; 2025 Healthcare System. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
