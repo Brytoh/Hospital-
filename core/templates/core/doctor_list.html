@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Healthcare System</title>
+    <title>Healthcare System - Doctors</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,6 +60,33 @@
             color: #333;
         }
 
+        .doctor-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .doctor-card {
+            background-color: white;
+            padding: 20px;
+            margin: 15px;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .doctor-card h3 {
+            color: #00796b;
+            font-size: 1.5rem;
+        }
+
+        .doctor-card p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
         footer {
             background-color: #00796b;
             color: white;
@@ -71,17 +98,12 @@
         footer p {
             margin: 0;
         }
-
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Welcome to Healthcare System</h1>
+    <h1>Doctors - Healthcare System</h1>
 </header>
 
 <nav>
@@ -89,48 +111,74 @@
     <a href="#vision">Vision</a>
     <a href="#contact">Contact</a>
     <a href="#services">Services</a>
+    <a href="#doctors">Doctors</a>
 </nav>
 
 <div class="container">
-    <!-- About Us Section -->
-    <section id="about">
-        <h2>About Us</h2>
-        <p>We are a dedicated healthcare service provider, offering the best medical care and health solutions. Our team of experienced doctors and medical staff are committed to providing excellent services, ensuring your health and well-being at all times.</p>
-    </section>
+    <!-- Doctors Section -->
+    <section id="doctors">
+        <h2>Our Doctors</h2>
+        <p>Meet our team of skilled and compassionate doctors who are here to help you with all your healthcare needs:</p>
 
-    <!-- Vision Section -->
-    <section id="vision">
-        <h2>Our Vision</h2>
-        <p>Our vision is to be the leading healthcare provider, revolutionizing the medical landscape through innovation, compassionate care, and a patient-first approach. We aim to make healthcare services more accessible, affordable, and efficient.</p>
-    </section>
+        <div class="doctor-list">
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <h3>Dr. John Doe</h3>
+                <p><strong>Specialty:</strong> General Medicine</p>
+                <p>Dr. John Doe has over 15 years of experience in general medicine, providing care for all ages and a wide range of conditions.</p>
+                <a href="book-appointment.html?doctor=1">Book Appointment</a>
+            </div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>If you have any questions, need assistance, or want to book an appointment, feel free to contact us:</p>
-        <p>Email: support@healthcaresystem.com</p>
-        <p>Phone: +123 456 7890</p>
-        <p>Address: 123 Healthcare St, Medical City</p>
-    </section>
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <h3>Dr. Jane Smith</h3>
+                <p><strong>Specialty:</strong> Pediatrics</p>
+                <p>With a passion for children's health, Dr. Jane Smith specializes in pediatric care, from newborns to adolescents.</p>
+                <a href="book-appointment.html?doctor=2">Book Appointment</a>
+            </div>
 
-    <!-- Services Section -->
-    <section id="services">
-        <h2>Our Services</h2>
-        <p>We provide a wide range of healthcare services, including:</p>
-        <ul>
-            <li>General Medicine</li>
-            <li>Surgical Procedures</li>
-            <li>Health Check-ups and Diagnostics</li>
-            <li>Emergency Care</li>
-            <li>Prescription Medicine</li>
-            <li>Specialist Consultations</li>
-        </ul>
+
+
+
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <h3>Dr. Alice Brown</h3>
+                <p><strong>Specialty:</strong> Cardiology</p>
+                <p>Dr. Alice Brown is a highly experienced cardiologist who focuses on diagnosing and treating heart-related conditions.</p>
+                <a href="book-appointment.html?doctor=3">Book Appointment</a>
+            </div>
+
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <h3>Dr. Mark Lee</h3>
+                <p><strong>Specialty:</strong> Orthopedics</p>
+                <p>Dr. Mark Lee specializes in treating bone and joint problems, providing both surgical and non-surgical solutions.</p>
+                <a href="book-appointment.html?doctor=4">Book Appointment</a>
+            </div>
+        </div>
     </section>
 </div>
 
 <footer>
     <p>&copy; 2025 Healthcare System. All rights reserved.</p>
 </footer>
+
+
+    <h1>Available Doctors</h1>
+    <ul>
+        {% for doctor in doctors %}
+            <li>
+                Dr. {{ doctor.first_name }} {{ doctor.last_name }} -
+                <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+
+
+
+
 
 </body>
 </html>
