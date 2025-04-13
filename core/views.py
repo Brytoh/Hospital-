@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required  # Import this decorator
 from django.http import HttpResponse
 from .models import Doctor, Appointment, Medicine, Order
 from .forms import AppointmentForm, OrderForm
@@ -13,6 +14,7 @@ def home(request):
     return render(request, 'core/home.html')
 
 # View to create an appointment with a specific doctor
+@login_required  # This decorator ensures the user must be logged in
 def create_appointment(request, doctor_id):
     doctor = get_object_or_404(Doctor, id=doctor_id)
 
@@ -21,6 +23,7 @@ def create_appointment(request, doctor_id):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.doctor = doctor  # Associate the appointment with the doctor
+            appointment.patient = request.user.patient  # Associate the appointment with the logged-in user (if you have a patient-user relation)
             appointment.save()
             # Redirect to the appointment detail page after booking the appointment
             return redirect('appointment_detail', appointment_id=appointment.id)
