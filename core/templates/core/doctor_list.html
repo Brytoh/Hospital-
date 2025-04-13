@@ -124,13 +124,15 @@
         <p>Meet our team of skilled and compassionate doctors who are here to help you with all your healthcare needs:</p>
 
         <div class="doctor-list">
+            <!-- Loop through each doctor in the 'doctors' list -->
             {% for doctor in doctors %}
             <div class="doctor-card">
                 <img src="{% if doctor.image %}{{ doctor.image.url }}{% else %}{% static 'images/default_image_path.jpg' %}{% endif %}" alt="Doctor Image" />
                 <h3>Dr. {{ doctor.first_name }} {{ doctor.last_name }}</h3>
                 <p><strong>Specialty:</strong> General Medicine</p>
-
-                <p>Dr. {{ doctor.first_name }} {{ doctor.last_name }} has years of experience in general medicine, providing care for all ages and a wide range of conditions.</p>
+                <p>
+                    Dr. {{ doctor.first_name }} {{ doctor.last_name }} is an experienced physician specializing in general medicine, with expertise in diagnosing and treating a wide range of medical conditions. He is skilled in managing chronic diseases such as diabetes, hypertension, asthma, heart disease, and arthritis, as well as acute illnesses like infections, respiratory conditions, and gastrointestinal disorders. Dr. {{ doctor.last_name }} also focuses on preventive healthcare, offering guidance on lifestyle changes and health management. His patient-centered approach ensures tailored care for each individual, promoting long-term health and overall well-being.
+                </p>
                 <a href="{% url 'create_appointment' doctor.id %}">Book an Appointment</a>
             </div>
             {% endfor %}
